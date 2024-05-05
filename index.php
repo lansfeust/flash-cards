@@ -1,12 +1,20 @@
 <?php
 session_start();
 
-/*if ( !isset( $_SESSION['route'] ) ) {
-    # code...
-} */
-switch ( $_SESSION['route'] ) {
+/*# -----------------------------------------------
+#		    Zone des 'imports' de bibliotheques
+# -----------------------------------------------*/
+include_once('controleur\autoload.php');
+include_once('vue\head.html');
+
+
+
+/*# -------------------------------------------------------
+#						PROGRAMME
+# -------------------------------------------------------*/
+switch ( @$_SESSION['route'] ) {
     case null :
-        include_once('connection.php') ;
+        include_once('controleur/connection.php') ;
         break;
     
     default:
@@ -15,4 +23,5 @@ switch ( $_SESSION['route'] ) {
 }
 
 
+include_once('vue\footer.html');
 ?>
