@@ -31,8 +31,6 @@ switch ( @$_SESSION['route'] ) {
         break;
 }
 
-$aff->a($_SESSION['route']) ;; //Efface-moi
-
-$aff->a($_GET['Deconnection']) ; //Efface-moi
+$aff->a( @$_GET['creer']  ) ;; //Efface-moi
 include_once('vue\footer.html');
 ?>
