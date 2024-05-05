@@ -25,12 +25,17 @@ switch ( @$_SESSION['route'] ) {
     case null :
         include_once('controleur/connection.php') ;
         break;
+
+    case 'acceuil' :
+        include_once('vue/acceuil.html') ;
+        $aff->B( 'Connection reussi !!!' ) ;; //Efface-moi
+        break;
     
     default:
         # code...; //Efface-moi
         break;
 }
 
-$aff->a( @$_GET['creer']  ) ;; //Efface-moi
+$aff->a( $_SESSION['route']  ) ;; //Efface-moi
 include_once('vue\footer.html');
 ?>

@@ -14,28 +14,31 @@
                 => Si oui on crée la bdd .
         => On garde le  pseudo dans une session . 
 */
-if ( isset( $_POST['pseudo'] ) ) {
+
+if ( isset( $_GET['pseudo'] ) ) {
     
-    $chemin_bdd = 'model/'.$_POST['pseudo'].'.db'  ;
+    $_SESSION['pseudo'] = $_GET['pseudo'] ; 
+    $chemin_bdd = 'model/'.$_SESSION['pseudo'].'.db'  ; // On récupére le chemin de la base de données
     $reponse = is_file($chemin_bdd) ; // Teste si le fichier existe
+    $_SESSION['route']= 'acceuil' ;
 
     if ( $reponse ) {
-        $_SESSION['pseudo'] = $_POST['pseudo'] ; 
+        $_SESSION['pseudo'] = $_GET['pseudo'] ; 
         $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe on ce connecte
-        $aff->b('heeee hooooo !!!');
+        echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
         
     }else {
         $texte =  <<<AOE
         <div class="container">
 
-        <h1 class="display-4">L'utilisateur <span class="text-danger">  $_POST[pseudo] </span> que vous avez entré n'existe pas</h1>
+        <h1 class="display-4">L'utilisateur <span class="text-danger">  $_GET[pseudo] </span> que vous avez entré n'existe pas</h1>
 
         <p class="lead">Voulez-vous :</p>
         
-        <form action="" method="post">
-        <input type="Hidden" class="form-control" id="number1" name="pseudo" value="$_POST[pseudo]">
-        <button type="submit" class="btn btn-primary" name='creer' value='creation'button>Créer un utilisateur</button>
-        <!--- <a href=http://$_SERVER[SERVER_NAME]:8080 button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a> Vrai version en réel --->
+        <form action="http://$_SERVER[SERVER_NAME]:8080/fc/" method="GET">
+        <input type="Hidden" class="form-control" id="number1" name="pseudo" value="$_GET[pseudo]">
+        <!--- <a href=http://$_SERVER[SERVER_NAME]:8080/fc/ button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a> Vrai version en réel --->
+        <a href=http://127.0.0.1:8080/fc/?creer=creation button type="submit" class="btn btn-primary"  >Créer un utilisateur</a>
         <a href=http://127.0.0.1:8080/fc/ button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a>
         </form>
     </div>
@@ -44,10 +47,13 @@ AOE;
         echo $texte ;
     }
 
-}elseif ( @$_POST['creer']  ) {
-    $_SESSION['pseudo'] = $_POST['pseudo'] ; 
-    $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe on ce connecte
-//    $connection ->creationTable( $_SESSION['pseudo'] ) ;
+}elseif ( $_GET['creer']  ) {
+
+    $chemin_bdd = 'model/'.$_SESSION['pseudo'].'.db'  ; // On récupére le chemin de la base de données
+    $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe pas on le crée
+    $connection ->creationTable() ;
+    $_SESSION['route']= 'acceuil' ;
+    echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
 }
 else {
     include_once('vue\formulaire_connection.html') ;
