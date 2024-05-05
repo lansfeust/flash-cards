@@ -6,13 +6,13 @@ session_start();
 # -----------------------------------------------*/
 include_once('controleur\autoload.php');
 include_once('vue\head.html');
-include_once('controleur\deconnection.php');
 
 
 /*# -------------------------------------------------------
 #		Zone de déclaration des modules ou des fonctions
 # -------------------------------------------------------*/
-$aff = new aff(); // affiche mieux les variables (code personnel )
+include_once('controleur\deconnection.php');
+$aff = new aff(); // affiche mieux les variables (code personnel ); //Efface-moi
 
 /*# -------------------------------------------------------
 #						PROGRAMME
@@ -27,12 +27,12 @@ switch ( @$_SESSION['route'] ) {
         break;
     
     default:
-        # code...
+        # code...; //Efface-moi
         break;
 }
 
-$aff->a($_SESSION['route']) ;
+$aff->a($_SESSION['route']) ;; //Efface-moi
 
-$aff->a($_GET['Deconnection']) ;
+$aff->a($_GET['Deconnection']) ; //Efface-moi
 include_once('vue\footer.html');
 ?>

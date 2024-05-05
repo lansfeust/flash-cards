@@ -18,7 +18,7 @@ if ( isset( $_GET['pseudo'] ) ) {
     
     $_SESSION['pseudo'] = $_GET['pseudo'] ; 
     $_SESSION['route'] = 'oui' ; // Efface-moi
-    $aff->a( 'Get connection' ) ;
+    $aff->a( 'Get connection' ) ;; //Efface-moi
 
 }else {
     include_once('vue\formulaire_connection.html') ;
