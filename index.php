@@ -6,7 +6,7 @@ session_start();
 # -----------------------------------------------*/
 include_once('controleur\autoload.php');
 include_once('vue\head.html');
-
+$route = 'http://127.0.0.1:8080/fc/' ;
 
 /*# -------------------------------------------------------
 #		Zone de déclaration des modules ou des fonctions
@@ -27,8 +27,19 @@ switch ( @$_SESSION['route'] ) {
         break;
 
     case 'acceuil' :
-        include_once('vue/acceuil.html') ;
-        $aff->B( 'Connection reussi !!!' ) ;; //Efface-moi
+        include_once('vue/menue.html') ;
+//        $aff->B( 'Connection reussi !!!' ) ;; //Efface-moi
+
+        switch ( @$_GET['route'] ) {
+            case 'famille':
+                include_once('vue\famille.html');
+                include_once('controleur\famille.php') ;
+                break;
+
+            default:
+                # code...
+                break;
+        }
         break;
     
     default:
@@ -36,6 +47,7 @@ switch ( @$_SESSION['route'] ) {
         break;
 }
 
-$aff->a( $_SESSION['route']  ) ;; //Efface-moi
+$aff->a( $_SESSION['route']  ) ; //Efface-moi
+$aff->a( $connection  ) ; //Efface-moi
 include_once('vue\footer.html');
 ?>

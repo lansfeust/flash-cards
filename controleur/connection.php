@@ -20,12 +20,15 @@ if ( isset( $_GET['pseudo'] ) ) {
     $_SESSION['pseudo'] = $_GET['pseudo'] ; 
     $chemin_bdd = 'model/'.$_SESSION['pseudo'].'.db'  ; // On récupére le chemin de la base de données
     $reponse = is_file($chemin_bdd) ; // Teste si le fichier existe
-    $_SESSION['route']= 'acceuil' ;
+//    $_SESSION['route']= 'acceuil' ;
 
     if ( $reponse ) {
         $_SESSION['pseudo'] = $_GET['pseudo'] ; 
         $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe on ce connecte
         echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
+        $_SESSION['route']= 'acceuil' ;
+        $_SESSION['bdd'] = $connection ; 
+
         
     }else {
         $texte =  <<<AOE
@@ -35,11 +38,11 @@ if ( isset( $_GET['pseudo'] ) ) {
 
         <p class="lead">Voulez-vous :</p>
         
-        <form action="http://$_SERVER[SERVER_NAME]:8080/fc/" method="GET">
+        <form action="$route" method="GET">
         <input type="Hidden" class="form-control" id="number1" name="pseudo" value="$_GET[pseudo]">
-        <!--- <a href=http://$_SERVER[SERVER_NAME]:8080/fc/ button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a> Vrai version en réel --->
-        <a href=http://127.0.0.1:8080/fc/?creer=creation button type="submit" class="btn btn-primary"  >Créer un utilisateur</a>
-        <a href=http://127.0.0.1:8080/fc/ button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a>
+        <!--- <a href=$route button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a> Vrai version en réel --->
+        <a href=$route?creer=creation button type="submit" class="btn btn-primary"  >Créer un utilisateur</a>
+        <a href=$route button type="submit" class="btn btn-secondary"  >Changer d'utilisateur</a>
         </form>
     </div>
 AOE;
@@ -47,12 +50,14 @@ AOE;
         echo $texte ;
     }
 
-}elseif ( $_GET['creer']  ) {
+}elseif ( @$_GET['creer']  ) {
 
     $chemin_bdd = 'model/'.$_SESSION['pseudo'].'.db'  ; // On récupére le chemin de la base de données
     $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe pas on le crée
     $connection ->creationTable() ;
     $_SESSION['route']= 'acceuil' ;
+    $_SESSION['bdd'] = $chemin_bdd ; 
+
     echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
 }
 else {
