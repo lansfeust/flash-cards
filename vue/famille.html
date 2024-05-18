@@ -2,11 +2,12 @@
     <h1>Famille</h1>
     
     <!-- Premier Formulaire -->
-    <form action="" method="GET">
+    <form action="<?php echo $route ?>?route=famille" method="GET">
         <div class="form-group">
             <label for="number1">Pseudo :</label>
-            <input type="text" class="form-control" id="number1" name="famille" value="lansfeust_de_troys">
+            <input type="text" class="form-control" id="number1" name="route" value="famille">
+            <input type="hidden" class="form-control" id="number1" name="famille" value="lansfeust_de_troys">
         </div>
-        <button type="submit" class="btn btn-primary" >Validation</button>
+        <button type="submit" class="btn btn-primary" value="route">Validation</button>
     </form>
 </div>

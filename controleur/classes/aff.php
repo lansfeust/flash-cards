@@ -8,7 +8,7 @@ class aff{
         echo '</u></h1> ';
         echo '<pre><h1> ';
         print_r($var);
-        echo '<u>Fin d affichage</u><hr>';
+        echo '<u><br>Fin d affichage</u><hr>';
         echo '</h1></pre><hr>';
     }
 

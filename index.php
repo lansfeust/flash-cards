@@ -47,7 +47,5 @@ switch ( @$_SESSION['route'] ) {
         break;
 }
 
-$aff->a( $_SESSION['route']  ) ; //Efface-moi
-$aff->a( $connection  ) ; //Efface-moi
 include_once('vue\footer.html');
 ?>

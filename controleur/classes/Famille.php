@@ -14,7 +14,10 @@ class Famille {
         
 //        $base = $$nom_Utilisateur . 'db' ;
 //        $_SESSION['bdd'] -> query('SELECT bar FROM foo') ;
-        $tablesquery = $var->query("SELECT name FROM sqlite_master WHERE type='table';") ;
+
+        $query = 'SELECT * FROM famille'; 
+        $results = $var->query($query);
+//        $tablesquery = $var->query("SELECT * FROM famille ") ; // Encienne version
 
         
     } 
