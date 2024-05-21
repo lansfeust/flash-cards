@@ -3,6 +3,7 @@
 class Famille {
     
     public $connect ;
+    private static $pdo ;
 
     public function __construct() {
         
