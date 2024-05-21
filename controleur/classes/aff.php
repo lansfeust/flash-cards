@@ -30,7 +30,7 @@ class aff{
                 </style>
                 <div class='mon_alerte'>
                 <h1>La variable contient :</h1><br>
-        AOE;
+AOE;
         echo $var ;
         echo '<hr>';
     }
