@@ -10,7 +10,7 @@ class Connection
 
     public function creationTable()
     {   
-        //$requette = "CREATE TABLE `$var` ( `id` VARCHAR NOT NULL AUTO_INCREMENT , `Question` VARCHAR(550) NOT NULL , `Reponse` VARCHAR(550) NOT NULL , `Niveau` INT(2) NOT NULL DEFAULT '1' , `DateDeVue` INT(10) NOT NULL , `cheminImage` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM; ' ";
+        //$requette = "CREATE TABLE `$var` ( `id` VARCHAR NOT NULL AUTO_INCREMENT , `Question` VARCHAR(550) NOT NULL , `Reponse` VARCHAR(550) NOT NULL , `Niveau` INT(2) NOT NULL DEFAULT '1' , `DateDeVue` INT(10) NOT NULL , `cheminImage` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM; ' "; // version mysql
 
         $requette = "CREATE TABLE famille (
             idFamille INTEGER PRIMARY KEY,

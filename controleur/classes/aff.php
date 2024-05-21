@@ -33,5 +33,4 @@ class aff{
     }
 }
 
-$aff = new aff() ;
 ?>
