@@ -21,14 +21,14 @@ $aff = new aff(); // affiche mieux les variables (code personnel ); //Efface-moi
 /*
     Si $_SESSION['route'] n'existe pas on propose a l'utilisateur de ce connecter / inscrire . 
 */
-$aff->f( $_SESSION ) ;// Efface-moi
+//  $aff->f( $_SESSION ) ;// Efface-moi
 
 switch ( @$_SESSION['route'] ) {
     case null :
         include_once('controleur/connection.php') ;
         break;
 
-    case 'acceuil' :
+    case 'Accueil' :
         include_once('vue/menue.html') ;
 //        $aff->B( 'Connection reussi !!!' ) ;; //Efface-moi
 

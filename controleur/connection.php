@@ -26,7 +26,7 @@ if ( isset( $_GET['pseudo'] ) ) {
         $_SESSION['pseudo'] = $_GET['pseudo'] ; 
         $connection = new Connection( $chemin_bdd ) ; // Si le fichier existe on ce connecte
         echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
-        $_SESSION['route']= 'acceuil' ;
+        $_SESSION['route']= 'Accueil' ;
         $_SESSION['bdd'] = $chemin_bdd ; 
 
         
@@ -56,7 +56,7 @@ AOE;
     $_SESSION['bdd'] = $chemin_bdd ; 
     $connection = new Connection( $_SESSION['bdd']  ) ; // Si le fichier existe pas on le crée
     $connection ->creationTable() ;
-    $_SESSION['route']= 'acceuil' ;
+    $_SESSION['route']= 'Accueil' ;
 
     echo '<META HTTP-EQUIV="Refresh" CONTENT="1; ">' ; // Actualisation de la page
 }
